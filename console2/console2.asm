@@ -5,8 +5,8 @@ include 'win32a.inc'
 section '.data' data readable writeable
 
         prompt db 'What is your name? ', 0
-        outstr db 'You name is %d', 0
-        inputStr db '%d', 0
+        outstr db 'You name is %s', 0
+        inputStr db '%s', 0
 
         name db ?
 
