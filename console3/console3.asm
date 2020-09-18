@@ -8,16 +8,15 @@ section '.data' data writable
 
         namePrompt db 'What is your name? ', 0
         agePrompt db 'How old are you? ', 0
-        outStr db 'Your name is %s, and you are %d years old!', 0
+        result db 'Your name is %s, and you are %d years old', 0
 
-        nameIn db '%s', 0
-        ageIn db '%d', 0
+        stringInOut db '%s', 0
+        digitInOut db '%d', 0
 
         name dt ?
         age dd ?
 
         NULL = 0
-
 
 section '.code' code readable executable
         start:
@@ -25,26 +24,25 @@ section '.code' code readable executable
                 call [printf]
 
                 push name
-                push nameIn
+                push stringInOut
                 call [scanf]
 
                 push agePrompt
                 call [printf]
 
                 push age
-                push ageIn
+                push digitInOut
                 call [scanf]
 
-                push age
+                push [age]
                 push name
-                push outStr
+                push result
                 call [printf]
 
                 call [getch]
 
                 push NULL
                 call [ExitProcess]
-
 
 section 'idata' import data readable
         library kernel, 'kernel32.dll', \
